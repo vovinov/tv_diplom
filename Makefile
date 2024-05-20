@@ -4,6 +4,9 @@ EXEC = docker exec -it
 DB_CONTAINER = tv_diplom
 LOGS = docker logs
 ENV = --env-file .env
+APP_FILE = docker_compose/app.yaml
+APP_CONTAINER = main-app
+
 
 MAKE := make
 
@@ -22,3 +25,7 @@ storages-logs:
 .PHONY: app
 app:
 	${DC} -f ${APP_FILE} -f ${STORAGES_FILE} ${ENV} up -d
+
+.PHONY: app-logs
+app-logs:
+	${LOGS} ${APP_CONTAINER} -f

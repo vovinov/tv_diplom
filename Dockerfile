@@ -18,9 +18,9 @@ RUN pip install --upgrade pip
 RUN pip install poetry
 
 RUN poetry config virtualenvs.create false
-RUN poetry install --on-root --no-interaction --no-ansi
+RUN poetry install --no-root --no-interaction --no-ansi
 
-COPY . /app
-COPY ./docker_compose/entrypoint.sh /entrypoint.sh
+COPY . /app/
+COPY entrypoint.sh /entrypoint.sh
 
 RUN cmod +x /entrypoint.sh
